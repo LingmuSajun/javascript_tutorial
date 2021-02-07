@@ -7,8 +7,9 @@
  * ※if文は削除してはいけません。
  */
 function fn() {
+    let a;
     if(true) {
-        let a = 'fn called';
+        a = 'fn called';
     }
     return a; // ReferenceError: a is not defined
 }
@@ -23,14 +24,14 @@ console.log(result);
  */
 var val = 'val1';
 function fn2() {
-    console.log(val); // 期待値->'val1'
+    console.log('a: ' + val); // 期待値->'val1'
 
     if(true) {
-        var val = 'val2';
-        console.log(val); // 期待値->'val2'
+        let val = 'val2';
+        console.log('b: ' + val); // 期待値->'val2'
     }
 
-    console.log(val); // 期待値->'val1'
+    console.log('c: ' + val); // 期待値->'val1'
 }
 fn2();
 
@@ -45,4 +46,16 @@ fn2();
  * increment(); // 期待値->3
  * increment(); // 期待値->4
  */
+
+{
+    let a = 0;
+    function increment() {
+        a += 1;
+        console.log(a);
+    }
+}
+increment();
+increment();
+increment();
+increment();
 
